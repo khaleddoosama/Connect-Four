@@ -92,6 +92,13 @@ def score_position(board, piece):
 		for c in range(COLUMN_COUNT-3):
 			window = row_array[c:c+WINDOW_LENGTH]
 			score += evaluate_window(window, piece)
+	
+    ## Check vertical locations for win
+	for c in range(COLUMN_COUNT):
+		for r in range(ROW_COUNT-3):
+			if board[r][c] == piece and board[r+1][c] == piece and board[r+2][c] == piece and board[r+3][c] == piece:
+				return True
+
 pygame.init()
 
 SQUARESIZE = 100
